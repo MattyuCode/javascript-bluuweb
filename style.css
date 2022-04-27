@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*
+body {
+     background: #333; *
+    background: linear-gradient(to right, #000046, #1cb5e0);
+
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: #fff;
+    border-radius: 15px;
+    height: 450px;
+    max-width: 450px;
+    padding: 16px 25px;
+    position: absolute;
+
+    /* background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+
+    *
+} 
+
+form {
+    margin-top: 30px;
+}
+
+h1 {
+    color: crimson;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1 span {
+    color: #043150;
+}
+
+form .d-grid button {
+    background: linear-gradient(to right, #00c6ff 0%, #0072ff 51%, #1fa2ff 100%);
+    padding: 0.75rem 2.10rem;
+    border:none;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+form .d-grid button:hover {
+    transform: scale(1.03);
+    letter-spacing: 0.2em;
+
+}*/
+
+body{
+    background: rgb(199, 199, 199);
+}
+
+body::-webkit-scrollbar{
+    /* display: none; */
+}
