@@ -713,7 +713,6 @@ const eliminarElBoton = (e) => {
 };
 */
 
-
 /*-------------------Javascript (Formularios) */
 /*--------------------------------Expresiones Regulares-------------------- */
 // const nombre = /Mattyu/i;
@@ -724,7 +723,6 @@ const eliminarElBoton = (e) => {
 
 // const nombreObj2 = new RegExp("Mattyu|Mateo", "i");
 // console.log(nombreObj2.test("Mattyu "));
-
 
 // // numero y letras
 // const numeroBuscar = /[A-Za-z0-9]/i;
@@ -747,7 +745,6 @@ const eliminarElBoton = (e) => {
 // const validaEmail = /^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$/;
 
 // console.log(validaEmail.test("mateo12@gmail.com"));
-
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~FORMULARIO JS
 
@@ -836,7 +833,6 @@ const mostrarSuccess = () => {
     console.log("Mensaje enviado");
 }
 */
-
 
 /*----------------------------CURSO PARTE NUMERO TRES No.# 3--------------------------------- */
 
@@ -993,20 +989,19 @@ const findPostById = async (id) => {
 findPostById(45);
 */
 
-
 // fetch("https://pokeapi.co/api/v2/pokemon/ditto")
 //     .then((res) => res.json())
 //     // .then((data) => console.log(data));
 //     .then((data) => console.log(data.forms[0].name, " y con el ", data.forms[0].url));
 
-
-//.....................creando una pagina con la api de rickand
+//.....................CREANDO UNA PAGINA CON LA API DE RICKAND
+/*
 const cardDinamics = document.querySelector('#cardDinamics'),
     template = document.querySelector("#templateCard").content;
 
 document.addEventListener("DOMContentLoaded", (e) => {
-    //aqui llamamos a la funcion donde tenemos nuestra api
-    fetchData();
+    //aqui llamamos a la funcion donde tenemos nuestra API
+        fetchData();
 });
 
 const fetchData = async (req, res) => {
@@ -1037,15 +1032,17 @@ const fetchData = async (req, res) => {
 
 // const obj = {
 //     dsfasd() {
-//         console.log("metodos");// INVESTIGAR MAS SOBRE OBJECT, PROPIEDADES METODOS: FUNCIONES ARRAY
+//         console.log("medatatodos");// INVESTIGAR MAS SOBRE OBJECT, PROPIEDADES METODOS: FUNCIONES ARRAY
 //     }
 // }
 
+//Mandamos a llamar esta mostrarCard dentro del fetchData para que funcione los items
 const mostrarCard = (data) => {
     console.log("Aqui se muestra ", data);
 
     //siempre utilizar fragment para textContent bluuweb lo xplica 😁
     const fragment = document.createDocumentFragment();
+    //este results se trae desde la API
     data.results.forEach(item => {
         // console.log(item);
         //aqui ya no se agrega el content porque ya esta en el querySelector
@@ -1074,9 +1071,286 @@ const laoding = (status) => {
         load.classList.add("d-none");
     }
 }
+*/
+
+/*--------------------------------POO EN JAVASCRIPT-------------------- */
+
+/*
+function Persona(_nombre, _edad) {
+    this.nombre = _nombre;
+    this.edad = _edad;
+
+    //metodos
+    this.saluda = () => {
+        return `${this.nombre} dice hola y su edad es ${this.edad}`;
+    }
+}
+
+//instanciar
+const juanito = new Persona("Juanito", 3);
+const pedrito = new Persona("Pedrito", 25);
+
+console.log(juanito.saluda());
+console.log(pedrito.saluda());
+
+class Persona {
+    constructor(name, edad) {
+        this.name = name;
+        this.edad = edad;
+    }
+
+    get getNombre() {
+        return this.nombre;
+    }
+
+    set setNombre(nombre) {
+        this.nombre = nombre;
+    }
+
+    saluda() {
+        return `${this.name} dice hola a todos`;
+    }
+
+    static probarSaludo(nombre) {
+        return `${nombre} probando saludo`;
+    }
+
+}
 
 
+class Estudiante extends Persona {
+    #notas2 = [];
+    constructor(nombre, edad, notas = []) {
+        super(nombre, edad)
+        this.notas = notas;
+    }
 
-// fetch(url)
-// .then((res) => res.json())
-// .then((data) => console.log(data));
+    set setNotas(notas) {
+        this.notas.push(notas);
+    }
+    get getNotas() {
+        return this.notas;
+    }
+    saluda() {
+        return `${this.nombre} desde saludar estudiante`;
+    }
+}
+
+
+// const juanito1 = new Estudiante("Ana");
+// console.log(juanito1.saluda());
+
+
+// const juanito1 = new Estudiante("Mateo Mendoza", 25 ,7);
+const juanito1 = new Estudiante("Mateo Mendoza", 25);
+juanito1.setNotas = 18;
+juanito1.setNotas = 8;
+juanito1.setNotas = 1;
+console.log(juanito1.getNotas);
+
+
+const juanito = new Persona("Mattyu");
+console.log(juanito.saluda());
+
+// juanito.setNombre = "Marcos";
+// console.log(juanito.getNombre);
+*/
+
+//...............................Formulario en POO
+const formulario = document.querySelector("#form"),
+  cardStudent = document.querySelector("#cardStudent"),
+  cardProfesor = document.querySelector("#cardProfesor"),
+  templateStudent = document.querySelector("#templateStudent"),
+  templateProfesor = document.querySelector("#templateProfesor");
+
+const estudiantesArray = [];
+const profesoresArray = [];
+
+//delegacion de eventos de los botones apro-repro
+document.addEventListener("click", (e) => {
+//   console.log(e.target.dataset.nombre);
+
+  if (e.target.dataset.nombre) {
+    // console.log(e.target.matches(".btn-success"));
+    if (e.target.matches(".btn-success")) {
+      estudiantesArray.map((item) => {
+        if (item.nombre == e.target.dataset.nombre) {
+          item.setEstado = true;
+        }
+        return item;
+      });
+    }
+
+    if (e.target.matches(".btn-danger")) {
+      estudiantesArray.map((item) => {
+        if (item.nombre == e.target.dataset.nombre) {
+          item.setEstado = false;
+        }
+        return item;
+      });
+    }
+
+    Persona.pintarPersonaUI(estudiantesArray, "Estudiante");
+  }
+});
+
+formulario.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  //Usaremos formData porque nos sirve para no capturar el value de los inputs y se agarra por los names
+
+  const datosForm = new FormData(formulario);
+  const [nombre, edad, fecha, opcion] = [...datosForm.values()];
+  // var foo = ['En', 'un', 'lugar', 'de', 'la', 'Mancha'];----------------
+  //     console.info(...foo); // EL VALOR DE LOS TRES PUNTOS ES PARA SACAR LETRAS DENTRO DE UN ARRAY
+  // // En un lugar de la Mancha-----------------
+
+  // console.log(nombre, edad, fecha, opcion);
+
+  // //instanciando la clase estudiante
+  // let estudiante = new Estudiante(nombre, edad, fecha);
+  //  console.log(estudiante);
+
+  //   //agregando a los estudiantes en el array
+  //   estudiantesArray.push(estudiante);
+  //   console.log(estudiantesArray);
+
+  //CAMBIE LOS IF POR UN SWITCH
+  // if (opcion === "Estudiante") {
+  //     let estudiante = new Estudiante(nombre, edad, fecha);
+  //     estudiantesArray.push(estudiante);
+  //     Persona.pintarPersonaUI(estudiantesArray, opcion);
+  // }
+
+  // if (opcion === "Profesor") {
+  //     let profesores = new Profesor(nombre, edad, fecha);
+  //     profesoresArray.push(profesores);
+  //     Persona.pintarPersonaUI(profesoresArray, opcion);
+  // }
+  switch (opcion) {
+    case "Estudiante":
+      let estudiante = new Estudiante(nombre, edad, fecha);
+      estudiantesArray.push(estudiante);
+      Persona.pintarPersonaUI(estudiantesArray, opcion);
+      break;
+
+    case "Profesor":
+      let profesores = new Profesor(nombre, edad, fecha);
+      profesoresArray.push(profesores);
+      Persona.pintarPersonaUI(profesoresArray, opcion);
+      break;
+    default:
+      console.log("NO hay más datos");
+      break;
+  }
+});
+
+//clase persona
+class Persona {
+  constructor(nombre, edad, fecha) {
+    this.nombre = nombre;
+    this.edad = edad;
+    this.fecha = fecha;
+  }
+
+  static pintarPersonaUI(personas, tipo) {
+    // if (tipo === "Estudiante") {
+    //   cardStudent.textContent = "";
+    //   const frag = document.createDocumentFragment();
+
+    //   personas.forEach((item) => {
+    //     frag.appendChild(item.agregarEstudiante());
+    //   });
+
+    //   cardStudent.appendChild(frag);
+    // }
+
+    // if (tipo == "Profesor") {
+    //   cardProfesor.textContent = "";
+    //   const frag = document.createDocumentFragment();
+    //   personas.forEach((item) => {
+    //     frag.appendChild(item.agregarProfesor());
+    //   });
+
+    //   cardProfesor.appendChild(frag);
+    // }
+
+    switch (tipo) {
+      case "Estudiante":
+        cardStudent.textContent = "";
+        const frags = document.createDocumentFragment();
+        personas.forEach((item) => {
+          frags.appendChild(item.agregarEstudiante());
+        });
+        cardStudent.appendChild(frags);
+        break;
+
+      case "Profesor":
+        cardProfesor.textContent = "";
+        const frag = document.createDocumentFragment();
+        personas.forEach((item) => {
+          frag.appendChild(item.agregarProfesor());
+        });
+        cardProfesor.appendChild(frag);
+        break;
+
+      default:
+        console.log("No se encontraron más datos");
+        break;
+    }
+  }
+}
+
+class Estudiante extends Persona {
+  //private
+  #estado = false;
+  #estudiante = "Estudiante";
+
+  set setEstado(_estado) {
+    this.#estado = _estado;
+  }
+
+  get getEstudiante() {
+    return this.#estudiante;
+  }
+
+  agregarEstudiante() {
+    const clone = templateStudent.content.cloneNode(true);
+    clone.querySelector("h5 .text-primary").textContent = this.nombre;
+    clone.querySelector("h6").textContent = this.getEstudiante;
+    clone.querySelector(".mat span").textContent = this.fecha;
+    clone.querySelector("p span").textContent = this.edad;
+
+    if (this.#estado) {
+      clone.querySelector(".badge").className = "badge bg-success";
+      clone.querySelector(".btn-success").disabled = true;
+      clone.querySelector(".btn-danger").disabled = false;
+    } else {
+      clone.querySelector(".badge").className = "badge bg-danger";
+      clone.querySelector(".btn-success").disabled = false;
+      clone.querySelector(".btn-danger").disabled = true;
+    }
+    clone.querySelector(".badge").textContent = this.#estado
+      ? "Aprobado"
+      : "Reprobado";
+
+    //aqui se agrega dataset como dinamico y si se agrega en html data-id="bnt" es estatico
+    clone.querySelector(".btn-success").dataset.nombre = this.nombre;
+    clone.querySelector(".btn-danger").dataset.nombre = this.nombre;
+    return clone;
+  }
+}
+
+class Profesor extends Persona {
+  #profesor = "Profesor";
+
+  agregarProfesor() {
+    const clone = templateProfesor.content.cloneNode(true);
+    clone.querySelector("h5").textContent = this.nombre;
+    clone.querySelector(".mat span").textContent = this.fecha;
+    clone.querySelector("h6").textContent = this.#profesor;
+    clone.querySelector("p span").textContent = this.edad;
+
+    return clone;
+  }
+}

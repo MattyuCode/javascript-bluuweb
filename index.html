@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Matty's Web 💻</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
         rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet" />
-
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -202,6 +200,7 @@
 
 
     <!-- ----------PROMESAS---------------- -->
+    <!--
     <div class="container mt-5">
         <section class="d-flex justify-content-center align-items-center d-none" id="loading">
             <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
@@ -211,9 +210,9 @@
         <section class="row mb-5" id="cardDinamics"></section>
 
         <template id="templateCard">
-            <!-- importante ver el responsive -->
-            <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"> -->
-            <!-- NOTA: cuando se agrega los cards con api se manda esto de abajo -->
+            <!-- importante ver el responsive --
+            <!-- <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"> --
+            <!-- NOTA: cuando se agrega los cards con api se manda esto de abajo --
             <div class="col-12 col-md-6 col-lg-4 g-4">
                 <div class="card">
                     <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
@@ -222,7 +221,7 @@
                         <a href="#!">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                         </a>
-                    </div>
+                     </div>
                     <div class="card-body">
                         <h5 class="card-title text-center">Card title</h5>
                         <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk
@@ -234,10 +233,92 @@
                     </div>
                 </div>
             </div>
+
         </template>
     </div>
+-->
 
 
+    <!-- clases de POO con formulario -->
+    <div class="container-fluid mt-4">
+        <h2 class="text-center">Estudiantes y profesores</h2>
+
+
+        <div class="row">
+            <div class="col-4">
+                <form action="" id="form" class="mt-4">
+                    <h5 class="text-center mb-4">Agregar Nuevo</h5>
+                    <hr>
+                    <input type="text" class="form-control mb-4" placeholder="Escribe el nombre" name="nombre"
+                        value="Mateo Carmelo Mendoza">
+
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <input type="number" id="defaultRegisterFormFirstName" name="edad" class="form-control"
+                                placeholder="Escribe la edad" value="25">
+                        </div>
+                        <div class="col-6">
+                            <input type="date" id="defaultRegisterFormLastName" name="fecha" class="form-control"
+                                value="1997-01-18" min="1996-01-01" max="2000-01-01">
+                        </div>
+                    </div>
+
+                    <select class="form-select mb-5" aria-label="Default select example" name="opcion">
+                        <option selected disabled>Selecciona una opcion</option>
+                        <option value="Estudiante">Estudiante</option>
+                        <option value="Profesor">Profesor</option>
+                    </select>
+
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success mt-2 mb-4" type="submit">Agregar</button>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="col-4" id="cardStudent">
+
+            </div>
+
+            <div class="col-4" id="cardProfesor">
+
+            </div>
+        </div>
+
+        <template id="templateStudent">
+            <div class="card mb-2 mt-4">
+                <div class="card-body">
+                    <h5>
+                        <span class="text-primary">Nombre</span><br>
+                        <span class="badge bg-success">Aprobado</span>
+                    </h5>
+                    <h6></h6>
+                    <h5 class="mat">Fecha Nacimiento: <span></span></h5>
+                    <p class="lead">Edad: <span></span></p>
+                    <div class="d-flex justify-content-center gap-2">
+                        <button class="btn btn-success btn-block m-0" type="submit">Aprobar</button>
+                        <button class="btn btn-danger btn-block m-0" type="submit">Reprobar</button>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="templateProfesor">
+            <div class="card  mb-2 mt-4">
+                <div class="card-body">
+                    <h5 class="text-danger text-center">Nombre</h5>
+                    <h5 class="mat">Fecha Nacimiento: <span></span></h5>
+                    <h6></h6>
+                    <p class="lead">Edad: <span></span></p>
+
+                </div>
+            </div>
+        </template>
+
+
+
+
+    </div>
 
     <script src="app.js"></script>
 </body>

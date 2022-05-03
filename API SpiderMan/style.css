@@ -1,0 +1,8 @@
+#cardDinamics .bg-image img{
+	transform: scale(1);
+	transition: .3s ease-in-out;
+}
+
+#cardDinamics .bg-image:hover img {
+	transform: scale(1.02);
+}
