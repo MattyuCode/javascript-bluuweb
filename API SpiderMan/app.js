@@ -94,3 +94,22 @@ const mostrarData = (data) => {
     document.getElementById('data').innerHTML = body
 
 }
+
+
+
+const HTMLResponse = document.querySelector("#app");
+const ul = document.createElement("ul");
+
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);                
+        data.forEach(item => {
+            let elem = document.createElement("li");
+            elem.appendChild(
+                document.createTextNode(`${item.name} ${item.email}`)
+            );
+            ul.appendChild(elem);
+        });
+        HTMLResponse.appendChild(ul);
+    });

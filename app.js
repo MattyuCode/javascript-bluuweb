@@ -1013,7 +1013,7 @@ const fetchData = async (req, res) => {
 
         //probar res para ver la diferencia
         //solo devuelve una respuesta
-        const res = await fetch(url);
+        const res = await fetch(url); 
         //probar data para ver la diferencia
         //para extraer el contenido en el cuerpo de json se usa json()
         const data = await res.json();
@@ -1161,7 +1161,8 @@ const formulario = document.querySelector("#form"),
   cardStudent = document.querySelector("#cardStudent"),
   cardProfesor = document.querySelector("#cardProfesor"),
   templateStudent = document.querySelector("#templateStudent"),
-  templateProfesor = document.querySelector("#templateProfesor");
+  templateProfesor = document.querySelector("#templateProfesor"),
+  alert = document.querySelector(".alert");
 
 const estudiantesArray = [];
 const profesoresArray = [];
@@ -1170,20 +1171,21 @@ const profesoresArray = [];
 document.addEventListener("click", (e) => {
 //   console.log(e.target.dataset.nombre);
 
-  if (e.target.dataset.nombre) {
+  if (e.target.dataset.id) {
     // console.log(e.target.matches(".btn-success"));
     if (e.target.matches(".btn-success")) {
       estudiantesArray.map((item) => {
-        if (item.nombre == e.target.dataset.nombre) {
+        if (item.id == e.target.dataset.id) {
           item.setEstado = true;
-        }
+        } 
+        console.log(item);
         return item;
       });
     }
 
     if (e.target.matches(".btn-danger")) {
       estudiantesArray.map((item) => {
-        if (item.nombre == e.target.dataset.nombre) {
+        if (item.id == e.target.dataset.id) {
           item.setEstado = false;
         }
         return item;
@@ -1227,6 +1229,15 @@ formulario.addEventListener("submit", (e) => {
   //     profesoresArray.push(profesores);
   //     Persona.pintarPersonaUI(profesoresArray, opcion);
   // }
+
+ if (!nombre.trim() || !edad.trim() || !fecha.trim() || !opcion.trim()) {
+     console.log("Algun dato en blaco");
+     alert.classList.remove("d-none");
+     return; // el return hace que todo el codigo sigue en ejecución
+ }else{
+    alert.classList.add("d-none");
+ }
+
   switch (opcion) {
     case "Estudiante":
       let estudiante = new Estudiante(nombre, edad, fecha);
@@ -1251,6 +1262,7 @@ class Persona {
     this.nombre = nombre;
     this.edad = edad;
     this.fecha = fecha;
+    this.id = `${Date.now()}`;//para generar un id aleatoria
   }
 
   static pintarPersonaUI(personas, tipo) {
@@ -1335,8 +1347,8 @@ class Estudiante extends Persona {
       : "Reprobado";
 
     //aqui se agrega dataset como dinamico y si se agrega en html data-id="bnt" es estatico
-    clone.querySelector(".btn-success").dataset.nombre = this.nombre;
-    clone.querySelector(".btn-danger").dataset.nombre = this.nombre;
+    clone.querySelector(".btn-success").dataset.id = this.id;
+    clone.querySelector(".btn-danger").dataset.id = this.id;
     return clone;
   }
 }
