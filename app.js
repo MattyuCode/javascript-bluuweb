@@ -1157,6 +1157,7 @@ console.log(juanito.saluda());
 */
 
 //...............................Formulario en POO
+/*
 const formulario = document.querySelector("#form"),
   cardStudent = document.querySelector("#cardStudent"),
   cardProfesor = document.querySelector("#cardProfesor"),
@@ -1366,3 +1367,28 @@ class Profesor extends Persona {
     return clone;
   }
 }
+*/
+
+
+/*--------------------------------MODULOS EN JAVASCRIPT-------------------- */
+// Funcion IIFE
+
+// (
+//     () => {
+//         const frutas = ["🍓"];
+//         console.log(frutas);
+//     }
+// )();
+
+//Importanto variable
+import { plata, sum, frutilla, Fruta } from "./js/appFrutas.js"
+console.log(plata);
+
+//Importanto funcion
+// import { sum } from "./js/appFrutas.js"
+console.log(sum(10, 15));
+
+frutilla();
+
+const guinda=new Fruta("🍒")
+console.log(guinda)
