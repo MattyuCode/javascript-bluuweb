@@ -1380,15 +1380,15 @@ class Profesor extends Persona {
 //     }
 // )();
 
-//Importanto variable
-import { plata, sum, frutilla, Fruta } from "./js/appFrutas.js"
-console.log(plata);
+// //Importanto variable
+// import { plata, sum, frutilla, Fruta } from "./js/appFrutas.js"
+// console.log(plata);
 
-//Importanto funcion
-// import { sum } from "./js/appFrutas.js"
-console.log(sum(10, 15));
+// //Importanto funcion
+// // import { sum } from "./js/appFrutas.js"
+// console.log(sum(10, 15));
 
-frutilla();
+// frutilla();
 
-const guinda=new Fruta("🍒")
-console.log(guinda)
+// const guinda=new Fruta("🍒")
+// console.log(guinda)
