@@ -39,7 +39,13 @@ for (let i = 0; i < frutas.length; i++) {
 
 frutas.forEach(item => {
     console.log(item);
-});*/
+});
+
+//Para mostrar indice del foreach y en que posicion esta
+frutas.forEach((item, index, arr) => {
+  console.log(`${index} = ${item} = ${arr}`);
+});
+*/
 
 //--------------------------------FUNCIONES------------------------------------------------------
 
