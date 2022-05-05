@@ -41,12 +41,12 @@ form {
     background: #ffff;
     padding: 16px 25px;
     padding-top: 30px;
-    height: 450px;
+    /* height: 450px; */
     border-radius: 10px;
 }
 
 form h5 {
-    color: crimson;
+    color: rgb(20, 73, 220);
     font-weight: 600;
 }
 
@@ -61,7 +61,7 @@ h1 span {
 }
 
 form .d-grid button {
-    background: linear-gradient(to right, #00c6ff 0%, #0072ff 51%, #1fa2ff 100%);
+    /* background: linear-gradient(to right, #00c6ff 0%, #0072ff 51%, #1fa2ff 100%); */
     padding: 0.75rem 2.10rem;
     border: none;
     letter-spacing: 0.05em;
@@ -75,6 +75,38 @@ form .d-grid button:hover {
 
 }
 
-body::-webkit-scrollbar {
-    /* display: none; */
+.scro{
+    background: #ffff;
+    padding: 16px 25px;
+    padding-top: 30px;
+    border-radius: 10px;
+
+    max-height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+    /* border-radius: 50px; */
 }
+
+.scro::-webkit-scrollbar {
+    width: 10px;
+    /* Tamaño del scroll en vertical */
+    height: 10px;
+    /* Tamaño del scroll en horizontal */
+    /* display: none; */
+    /* Ocultar scroll */
+}
+
+.scro::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.scro::-webkit-scrollbar-thumb:hover {
+    background: #b3b3b3;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.scro::-webkit-scrollbar-thumb:active {
+    background-color: #999999;
+}
+

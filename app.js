@@ -1392,3 +1392,146 @@ class Profesor extends Persona {
 
 // const guinda=new Fruta("🍒")
 // console.log(guinda)
+
+
+//------------------------LOCAL STORAGE
+
+// localStorage.setItem("Sandia", "🍉");
+// localStorage.setItem("Platano", "🍌");
+
+// if (localStorage.getItem("Sandia")) {
+//     const sandia = localStorage.getItem("Sandia");
+//     console.log(sandia);
+// }
+// if (localStorage.getItem("Platano")) {
+//     const Platano = localStorage.getItem("Platano");
+//     console.log(Platano);
+// }
+
+// localStorage.removeItem("Sandia");
+//  localStorage.clear();
+
+
+
+// const frutas = [{
+//         nombre: "k ",
+//         color: "amarillo",
+//     },
+//     {
+//         nombre: "Mattyu",
+//         color: "rojo",
+//     },
+//     {
+//         nombre: "dsf",
+//         color: "verde",
+//     },
+// ];
+
+// lo guardamos en el local storage
+// localStorage.setItem("frutas", JSON.stringify(frutas));
+
+// if (localStorage.getItem("frutas")) {
+//     const verFrutasConsole = JSON.parse(localStorage.getItem("frutas"));
+//     console.log("Obteniendo desde local storage", verFrutasConsole);
+// } else {
+//     console.log("NO se encontro nada en el local storage 😒😒");
+// }
+
+//localStorage.clear();
+
+//--------------PRACTICAS DE TODO CON LOCALSTORAGE---------------------->
+const formulario = document.querySelector("#formulario"),
+    pintarTable = document.querySelector("#pintarTable"),
+    template = document.querySelector("#tamplateTable"),
+    alert = document.querySelector(".alert");
+
+let listados = []; // dejamos un array vacio para ir agregando el listado
+
+formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+
+    const data = new FormData(formulario) // usaremos formData para ir trayendo input con name
+    const [nombre, fecha] = [...data.values()]
+    // console.log(nombre, fecha);
+
+
+    /////////////////////////AQUI VAMOS AGREGAR LOS TEXTO DE REQUERIDO
+    if (!nombre.trim() || !fecha.trim()) { //ahora parte falso
+        console.log("Algun dato en blaco");
+        alert.classList.remove("d-none");
+        return;
+        // el return hace que todo se sale de ejecución
+
+    } else { //ahora parte verdadero
+        alert.classList.add("d-none");
+        console.log(nombre, fecha);
+    }
+
+    //llamando la funcion agregarTod
+    agregarTod(nombre, fecha);
+    // console.log(nombre, fecha);
+
+    pintarTemplates();
+})
+
+//creamos una funcion donde tenga todo la informacion
+const agregarTod = (nombre, fecha) => {
+    //creando un objeto
+    const obj = {
+        nombre: nombre,
+        fecha: fecha,
+        id: `${Date.now()}`
+    }
+    //madamos los datos al array vacio
+    listados.push(obj);
+}
+
+const pintarTemplates = () => {
+    localStorage.setItem('Litados', JSON.stringify(listados));
+
+
+    pintarTable.textContent = "";
+    const frag = document.createDocumentFragment();
+
+    //del array vacio
+    listados.forEach(item => {
+        const clone = template.content.cloneNode(true);
+
+        clone.querySelector(".id").textContent = item.id;
+        clone.querySelector(".name").textContent = item.nombre;
+        clone.querySelector(".fecha").textContent = item.fecha;
+
+        //aqui le agregamos un dataset dinamico
+        clone.querySelector(".btn-danger").dataset.id = item.id;
+
+        frag.appendChild(clone)
+    });
+
+    pintarTable.appendChild(frag);
+
+}
+
+document.addEventListener("click", (e) => {
+    //aqui obtenemos el dataset del botton
+    // console.log(e.target.dataset.id);
+    // console.log(e.target.matches(".btn-danger"));
+
+    if (e.target.matches(".btn-danger")) {
+        // console.log("me precionaste");
+
+        //con filter estamos eliminando cada id con el boton
+        listados = listados.filter(item => item.id !== e.target.dataset.id)
+        pintarTemplates();
+    }
+});
+
+
+// esto nos ayudara a leer los datos que tenemos guardado en el local storage
+document.addEventListener("DOMContentLoaded", (e) => {
+    if (localStorage.getItem("Litados")) { // si existen en el local storage se van agregar en index
+        listados = JSON.parse(localStorage.getItem("Litados"));
+        pintarTemplates();
+
+    }
+})
