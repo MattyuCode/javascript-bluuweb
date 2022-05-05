@@ -1535,3 +1535,17 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     }
 })
+
+
+
+/*-----------------------------------CREANDO RAMAS Y AGREGANDO CODIGOS EN GITHUB------------------------------------------- */
+/*
+git branch
+git checkout -b "localStorage"
+git branch
+git add .
+git commit -m "Terminado"
+git push
+git push --set-upstream origin localStorage
+
+*/
