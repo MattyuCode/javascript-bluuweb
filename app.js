@@ -312,53 +312,47 @@ function presionar() {
 
 /*..................Carrito de compra No.1.............*/
 /*
-// const ul = document.querySelector("#carrito"),
-//     template = document.querySelector("#template"),
-//     btns = document.querySelectorAll(".card .btn");
-// const fragment = document.createDocumentFragment();
+const ul = document.querySelector("#carrito"),
+    template = document.querySelector("#template"),
+    btns = document.querySelectorAll(".card .btn");
+const fragment = document.createDocumentFragment();
+const carritoObjet = {};
+
+const agregarAlCarrito = (e) => {
+    console.log(e.target.dataset.fruta);
+    const producto = {
+        titulo: e.target.dataset.fruta,
+        id: e.target.dataset.fruta,
+        cantidad: 1
+    }
+    if (carritoObjet.hasOwnProperty(producto.titulo)) {
+        producto.cantidad = carritoObjet[producto.titulo].cantidad + 1;
+    }
+    carritoObjet[producto.titulo] = producto
+    //aqui llamamos a la funcion de pintarCarrito
+    pintarCarrito(producto)
+    console.log(carritoObjet);
+};
 
 
-// const carritoObjet = {};
-
-// const agregarAlCarrito = (e) => {
-//     console.log(e.target.dataset.fruta);
-
-//     const producto = {
-//         titulo: e.target.dataset.fruta,
-//         id: e.target.dataset.fruta,
-//         cantidad: 1
-//     }
-
-//     if (carritoObjet.hasOwnProperty(producto.titulo)) {
-//         producto.cantidad = carritoObjet[producto.titulo].cantidad + 1;
-//     }
-//     carritoObjet[producto.titulo] = producto
-
-//     //aqui llamamos a la funcion de pintarCarrito
-//     pintarCarrito(producto)
-//     console.log(carritoObjet);
-// };
-
-// const pintarCarrito = (prod) => {
-//     // console.log("pintando al carrito", prod);
-//     ul.textContent = " ";
-         // se usa el objet cuanto es un objeto  que recibe los listados
-//     Object.values(carritoObjet).forEach((item) => {
-//         const clone = template.content.firstElementChild.cloneNode(true);
-//         clone.querySelector(".lead").textContent = item.titulo;
-//         clone.querySelector(".badge").textContent = item.cantidad;
-
-//         fragment.appendChild(clone);
-//     });
-
-//     ul.appendChild(fragment);
-// }
-
-
-// btns.forEach((item) => {
-//     item.addEventListener("click", agregarAlCarrito);
-// });
+const pintarCarrito = (prod) => {
+    // console.log("pintando al carrito", prod);
+    //se agregar un textContent vacio para que no se repita el  foreach cuando se agregar en html
+    ul.textContent = " "; 
+    // se usa el objet cuanto es un objeto  que recibe los listados
+    Object.values(carritoObjet).forEach((item) => {
+        const clone = template.content.firstElementChild.cloneNode(true);
+        clone.querySelector(".lead").textContent = item.titulo;
+        clone.querySelector(".badge").textContent = item.cantidad;
+        fragment.appendChild(clone);
+    });
+    ul.appendChild(fragment);
+}
+btns.forEach((item) => {
+    item.addEventListener("click", agregarAlCarrito);
+});
 */
+
 
 /*-----------------------------------ARRAY DE METODOS---------------------------------- */
 /*
@@ -796,49 +790,65 @@ form.addEventListener("submit", (e) => {
         // console.log("Formato no válido");
         // return;
 
-        userName.classList.add("is-invalid");
-        errores.push({
-            tipo: alertName,
-            msg: "Formato no válido en el campo nombre, solo letras"
-        });
-    } else {
-        userName.classList.remove("is-invalid");
-        userName.classList.add("is-valid");
-        alertName.classList.add("d-none");
-    }
+            // //este es la funcion del return es para que se salga del codigo------------------------------->
+            //  let num1 = 5;
+            //     let num2 = "5";
+            //     if (num1 === num2) {
+            //         console.log("Es igual");
+            //         return;
+            //     }
+            //     if (num1 == num2) {
+            //         console.log("si igual");
+            //     } else if (num1 !== num2) {
+            //         console.log("es diferente");
+            //         console.log(typeof num1, typeof num2);
+            //     }
+     
 
-    if (!validacionEmail.test(userEmailV) || !userEmail.value.trim()) { // esto tiene que entrar en falso !
-        // console.log("Formato no válido de email");
-        // return;
+userName.classList.add("is-invalid");
+errores.push({
+    tipo: alertName,
+    msg: "Formato no válido en el campo nombre, solo letras"
+});
+}
+else {
+    userName.classList.remove("is-invalid");
+    userName.classList.add("is-valid");
+    alertName.classList.add("d-none");
+}
 
-        userEmail.classList.add("is-invalid");
+if (!validacionEmail.test(userEmailV) || !userEmail.value.trim()) { // esto tiene que entrar en falso !
+    // console.log("Formato no válido de email");
+    // return;
 
-        errores.push({
-            tipo: alertEmail,
-            msg: "Escriba un correo valido"
-        });
-    } else {
-        userEmail.classList.remove("is-invalid");
-        userEmail.classList.add("is-valid");
-        alertEmail.classList.add("d-none");
-    }
+    userEmail.classList.add("is-invalid");
 
-    if (errores.length != 0) {
-        pintarErrores(errores);
-        return;
-    }
-    mostrarSuccess();
+    errores.push({
+        tipo: alertEmail,
+        msg: "Escriba un correo valido"
+    });
+} else {
+    userEmail.classList.remove("is-invalid");
+    userEmail.classList.add("is-valid");
+    alertEmail.classList.add("d-none");
+}
+
+if (errores.length != 0) {
+    pintarErrores(errores);
+    return;
+}
+mostrarSuccess();
 });
 
 
 const mostrarSuccess = () => {
-    alertSuccess.classList.remove('d-none');
-    alertSuccess.innerHTML = `<div class="alert alert-success" role="alert">
+        alertSuccess.classList.remove('d-none');
+        alertSuccess.innerHTML = `<div class="alert alert-success" role="alert">
     Mensaje enviado con exito..!! 😁
     </div>`;
-    console.log("Mensaje enviado");
-}
-*/
+        console.log("Mensaje enviado");
+    }
+    */
 
 /*----------------------------CURSO PARTE NUMERO TRES No.# 3--------------------------------- */
 
@@ -1240,7 +1250,7 @@ formulario.addEventListener("submit", (e) => {
  if (!nombre.trim() || !edad.trim() || !fecha.trim() || !opcion.trim()) {
      console.log("Algun dato en blaco");
      alert.classList.remove("d-none");
-     return; // el return hace que todo el codigo sigue en ejecución
+     return; // el return hace que todo el codigo se salga de ejecucióny para evitar usar el else
  }else{
     alert.classList.add("d-none");
  }
@@ -1463,7 +1473,8 @@ formulario.addEventListener("submit", (e) => {
 
 
     /////////////////////////AQUI VAMOS AGREGAR LOS TEXTO DE REQUERIDO
-    if (!nombre.trim() || !fecha.trim()) { //ahora parte falso
+    if (!nombre.trim() || !fecha.trim()) { //ahora parte falso y el trim lipmia los espacios
+        //link del video || https://www.youtube.com/watch?v=EYmNfsp1aPE&list=PLPl81lqbj-4Iy7yuRrVLn4V6isOVpvlpl&index=3&t=21060s
         console.log("Algun dato en blaco");
         alert.classList.remove("d-none");
         return;
@@ -1478,6 +1489,7 @@ formulario.addEventListener("submit", (e) => {
     agregarTod(nombre, fecha);
     // console.log(nombre, fecha);
 
+    formulario.reset();
     pintarTemplates();
 })
 
@@ -1497,6 +1509,7 @@ const pintarTemplates = () => {
     localStorage.setItem('Litados', JSON.stringify(listados));
 
 
+    //se agregar un textContent vacio para que no se repita el foreach cuando se agregar en html
     pintarTable.textContent = "";
     const frag = document.createDocumentFragment();
 
@@ -1538,7 +1551,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     if (localStorage.getItem("Litados")) { // si existen en el local storage se van agregar en index
         listados = JSON.parse(localStorage.getItem("Litados"));
         pintarTemplates();
-
     }
 })
 
