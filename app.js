@@ -1558,12 +1558,20 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
 /*-----------------------------------CREANDO RAMAS Y AGREGANDO CODIGOS EN GITHUB------------------------------------------- */
 /*
+//VER RAMA
 git branch
+//Creando otra rama
 git checkout -b "localStorage"
+
 git branch
 git add .
 git commit -m "Terminado"
 git push
 git push --set-upstream origin localStorage
 
+//Elimina el archivo package.json del repositorio de Git
+git rm --cached package.json
+//Agrega la línea /package.json al archivo .gitignore
+git add .gitignore
+git commit -m "Agregando regla para ignorar el archivo package.json"
 */
