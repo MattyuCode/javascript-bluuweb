@@ -1575,3 +1575,6 @@ git rm --cached package.json
 git add .gitignore
 git commit -m "Agregando regla para ignorar el archivo package.json"
 */
+
+/*--Para eliminar node_modules-*/
+Para eliminar node_modules al repositorio, deberías eliminarlo del repositorio utilizando el comando git rm --cached -r node_modules 
