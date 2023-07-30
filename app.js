@@ -1569,6 +1569,9 @@ git commit -m "Terminado"
 git push
 git push --set-upstream origin localStorage
 
+* Para regresar a la rama main o cualquier rama
+git checkout main
+
 //Elimina el archivo package.json del repositorio de Git
 git rm --cached package.json
 //Agrega la línea /package.json al archivo .gitignore
